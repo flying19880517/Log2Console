@@ -165,20 +165,12 @@ namespace Log2Console.Log
         public string GetMessageDetails()
         {
             var sb = new StringBuilder();
-            sb.Append(@"{\rtf1\ansi ");
             foreach (var fieldType in UserSettings.Instance.MessageDetailConfiguration)
             {
-                var info = GetInformation(fieldType).Replace(@"\", @"\\").Replace("{", @"\{").Replace("}", @"\}");
-                sb.Append(@"\b " + fieldType.Field + @": \b0 ");
-                if (info.Length > 40)
-                    sb.Append(@" \line ");
-                info = info.Replace("\r\n", @" \line ");
-                info = info.Replace("\n", @" \line ");
-                sb.Append(info + @" \line ");
+                sb.Append(fieldType.Field + ": " + GetInformation(fieldType) + "\n");
             }
             // Maybe this isn't a good idea, possibly on a new tab.
-            sb.Append(@"\line \line Raw Log \line " + this.RawLog);
-            sb.Append(@"}");
+            sb.Append("\n\nRaw Log\n" + this.RawLog);
             return sb.ToString();
         }
     }

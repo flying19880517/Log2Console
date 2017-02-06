@@ -17,6 +17,7 @@ namespace TestNLog
             {
                 DoLog();
                 DoWinDebug();
+                _log.Info("测试中文");
 
                 Console.WriteLine("Press x to exit, any other to run tests.");
                 key = Console.ReadKey();
