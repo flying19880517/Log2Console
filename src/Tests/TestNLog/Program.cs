@@ -4,12 +4,28 @@ using TestNLog.Company.Product.BusinessLogic;
 using TestNLog.Company.Product.ServiceTester;
 namespace TestNLog
 {
-  class Program
+    //class MineTraceListener : System.Diagnostics.TraceListener
+    //{
+    //    static readonly Logger _log = LogManager.GetCurrentClassLogger();
+    //    public LogLevel Level { get; set; } = LogLevel.Debug;
+    //    public override void Write(string message)
+    //    {
+    //        _log.Log(Level, message);
+    //    }
+
+    //    public override void WriteLine(string message)
+    //    {
+    //        _log.Log(Level, message);
+    //    }
+    //}
+    class Program
   {
     static readonly Logger _log = LogManager.GetCurrentClassLogger();
 
         static void Main(string[] args)
         {
+            //System.Diagnostics.Debug.Listeners.Add(new MineTraceListener());
+            System.Diagnostics.Debug.Listeners.Add(new NLogTraceListener());
             Console.Title = "TestNLog";
             Console.WriteLine("Press x to exit, any other to run tests.");
             var key = Console.ReadKey();
